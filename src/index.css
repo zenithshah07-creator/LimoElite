@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #ffffff;
+    color: #1C1C2E;
+    overflow-x: hidden;
+  }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #f1f1f1; }
+  ::-webkit-scrollbar-thumb { background: #1A3A6B; border-radius: 3px; }
+}
+
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .gradient-bar {
+    height: 4px;
+    background: linear-gradient(90deg, #D62828, #F4821F, #FFD700, #F4821F, #D62828);
+    background-size: 200%;
+    animation: gradientMove 3s linear infinite;
+  }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: all 0.7s cubic-bezier(0.22, 0.68, 0, 1.2);
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .ribbon {
+    position: absolute;
+    top: 16px;
+    right: -8px;
+    background: #FFD700;
+    color: #0A1628;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 13px;
+    padding: 4px 14px 4px 10px;
+    letter-spacing: 1px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 6% 50%);
+  }
+
+  .b-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .b-input::placeholder { color: rgba(255, 255, 255, 0.5); }
+  .b-input option { background: #1A3A6B; color: #fff; }
+
+  .service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(26, 58, 107, 0.12);
+    border-top-color: #D62828 !important;
+  }
+
+  .vehicle-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .vehicle-card:hover {
+    transform: translateY(-10px);
+  }
+
+  .float-anim {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .pulse-dot {
+    animation: pulseDot 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0%; }
+  100% { background-position: 200%; }
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.4); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
